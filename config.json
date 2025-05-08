@@ -1,0 +1,370 @@
+{
+    "brands": [
+      {
+        "code": "HH",
+        "name": "HairHealth",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "HH",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "HairHealth",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "IL",
+        "name": "Inlife",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "IL",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "Inlife",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "MS",
+        "name": "MirisSpa",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "MS",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "MirisSpa",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "IB",
+        "name": "Inzpire",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "IB",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "Inzpire",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "NA",
+        "name": "Nana",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "NA",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "Nana",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "GW",
+        "name": "Glowy",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "GW",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "Glowy",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "KPL",
+        "name": "KPL",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "KPL",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "KPL",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "MM",
+        "name": "MirisMama",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": ["MS", "MM", "MMM"],
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "MirisMama",
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      },
+      {
+        "code": "CB",
+        "name": "CleanBear",
+        "excel_path": "",
+        "visits_path": "",
+        "excel": {
+          "header_row": 28,
+          "contact_date_col": "聯絡日期不要改",
+          "last_date_col": "最後日期",
+          "status_col": "預約狀態"
+        },
+        "visits": {
+          "sheet_name": "auto",
+          "header_row": 68,
+          "brand_col": 15,
+          "brand_value": "CB",
+          "show_col": 10,
+          "no_show_col": 9,
+          "date_col": 1,
+          "revenue_col": 14,
+          "treatment_type_col": "療程類型"
+        },
+        "google": {
+          "credentials_json": "axial-keep-457906-v7-157b88b12ebc.json",
+          "sheet_id": "PUT_YOUR_SHEET_ID",
+          "tab_name": "CleanBear",
+          "sub_tab": {
+            "face": { "tab_name": "CleanBearFace" },
+            "eye":  { "tab_name": "CleanBearEye" }
+          },
+          "date_col": 3,
+          "query_col": 4,
+          "book_col": 5,
+          "br_col": 6,
+          "visit_col": 7,
+          "revenue_col": 8,
+          "avg_revenue_col": 9,
+          "meta_col": 10,
+          "google_col": 11,
+          "total_ad_col": 12,
+          "cpl_col": 13,
+          "cpa_book_col": 14,
+          "cpa_visit_col": 16
+        }
+      }
+    ]
+  }
+  
