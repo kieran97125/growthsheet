@@ -1,85 +1,75 @@
-import streamlit as st
-import importlib
-import json
 import os
-from datetime import datetime
+import streamlit as st
+from datetime import date
+from core import load_config, build_brand_cfg, analyze_hh, parse_visits, run_brand
+import traceback
 
-# 讀取全局 config
-CONFIG_PATH = "config.json"
-def load_config(path=CONFIG_PATH):
-    if not os.path.exists(path):
-        st.error(f"找不到設定檔：{path}")
-        st.stop()
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
-config = load_config()
-
-# Streamlit 頁面配置
 st.set_page_config(page_title="GrowthSheet 多品牌報表", layout="wide")
+st.title("GrowthSheet v1.0")
 
-# 側邊欄：品牌選擇
-st.sidebar.header("品牌選擇")
-brands = config.get('brands', [])
-if not brands:
-    st.sidebar.error("未在 config.json 中設定任何品牌，請檢查配置。")
-    st.stop()
-brand_codes = [b['code'] for b in brands]
-selected = st.sidebar.selectbox(
-    "請選擇品牌",
-    brand_codes,
-    format_func=lambda c: next((b['name'] for b in brands if b['code']==c), c)
-)
-brand_cfg = next((b for b in brands if b['code']==selected), None)
-if not brand_cfg:
-    st.sidebar.error(f"找不到對應的品牌設定：{selected}")
-    st.stop()
+# 讀設定檔、選品牌
+cfg_all = load_config()
+codes = [b["code"] for b in cfg_all["brands"]]
+selected = st.sidebar.selectbox("選擇品牌", codes)
+brand_cfg = build_brand_cfg(cfg_all, selected)
 
-# 若品牌有子療程類型
+# 子療程
 subtype = None
-if 'subtypes' in brand_cfg:
-    st.sidebar.header("療程類型")
-    subtype = st.sidebar.radio(
-        "", brand_cfg['subtypes']
-    )
+if brand_cfg.get("subtypes"):
+    opts = ["全部"] + brand_cfg["subtypes"]
+    ch = st.sidebar.radio("療程類型", opts)
+    subtype = None if ch == "全部" else ch
 
-# 主畫面輸入
-st.title(f"GrowthSheet 報表工具 — {brand_cfg['name']}")
+# 上傳檔案
+st.header("請上傳 Excel 檔案")
+hh_file = st.file_uploader("CS Booking Excel", type=["xls", "xlsx"])
+visits_file = st.file_uploader("Show up Excel", type=["xls", "xlsx"])
 
-hh_path     = st.text_input("CS Booking Excel路徑 例如(XX 客人預約詳細資料 2025) 不包括引號", value=brand_cfg.get('excel_path',''))
-visits_path = st.text_input("Show up Excel路徑 例如(202505 IB 每日新客show up 報表及統計) 不包括引號", value=brand_cfg.get('visits_path',''))
-target_date = st.date_input("分析日期", datetime.now().date())
+# 參數設定
+st.header("參數設定")
+target_date = st.date_input("分析日期", date.today())
+ad_meta = st.number_input("Meta 廣告費", min_value=0.0, value=0.0, step=1.0)
+ad_google = st.number_input("Google 廣告費", min_value=0.0, value=0.0, step=1.0)
 
-st.subheader("手動輸入廣告費")
-ad_meta   = st.number_input("Meta 廣告費",   min_value=0.0)
-ad_google = st.number_input("Google 廣告費", min_value=0.0)
-
-# 執行按鈕
-if st.button("執行並寫入 Google Sheet"):
-    # 驗證檔案路徑
-    if not hh_path or not os.path.exists(hh_path):
-        st.error("Customer Record路徑錯誤"); st.stop()
-    if not visits_path or not os.path.exists(visits_path):
-        st.error("Show up路徑錯誤"); st.stop()
-    if ad_meta + ad_google <= 0:
-        st.error("請輸入廣告費"); st.stop()
-
-    # 動態 import 品牌模組
+# 先预览
+if hh_file and visits_file:
+    st.subheader("📊 預覽結果（不寫入 Google Sheet）")
     try:
-        mod = importlib.import_module(f"brands.{selected}")
-    except ImportError as e:
-        st.error(f"無法載入品牌模組: {e}")
+        qc, bc, br = analyze_hh(hh_file, brand_cfg["excel"], target_date, subtype)
+        visits, revenue = parse_visits(visits_file, brand_cfg["visits"], target_date, subtype)
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("詢訪 QC", qc)
+        col2.metric("到店 BC", bc)
+        col3.metric("到店率 BR", f"{br}%")
+        col4.metric("到店數 VISITS", visits)
+        st.metric("實收金額 Revenue", f"{revenue}")
+    except Exception as e:
+        st.error(f"預覽時計算失敗：{e}")
+
+# 真正執行寫表
+if st.button("執行並寫入 Google Sheet"):
+    # 驗證
+    if hh_file is None:
+        st.error("請先上傳 CS Booking Excel")
+        st.stop()
+    if visits_file is None:
+        st.error("請先上傳 Show up Excel")
         st.stop()
 
-    # 呼叫品牌模組 run() 接口
     try:
-        mod.run(
-            hh_path=hh_path,
-            visits_path=visits_path,
+        ok = run_brand(
+            cfg=brand_cfg,
+            paths={"hh": hh_file, "visits": visits_file},
             date=target_date,
             subtype=subtype,
             ad_meta=ad_meta,
             ad_google=ad_google
         )
-        st.success("更新完成！")
+        if ok:
+            st.success("✅ 更新完成！")
+        else:
+            st.error("❌ 更新失敗，請檢查日誌或設定。")
     except Exception as e:
-        st.error(f"執行失敗: {e}")
+        st.error(f"執行時錯誤：{e}")
+        st.text(traceback.format_exc())
+
